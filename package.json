@@ -1,0 +1,27 @@
+{
+  "name": "scraperbike",
+  "version": "1.0.0",
+  "description": "A Node.js app for Web Scraping",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agunforhire/scraperBike.git"
+  },
+  "author": "James Wilcox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agunforhire/scraperBike/issues"
+  },
+  "homepage": "https://github.com/agunforhire/scraperBike#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.9",
+    "morgan": "^1.9.1"
+  }
+}
