@@ -1,0 +1,36 @@
+<header>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">NYT Scraper</h1>
+      <p class="lead"></p>
+      <hr class="m-y-md">
+      <p></p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <a class="btn btn-primary btn-lg float-right" href="/saved">View Saved  Articles</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  {{#each article}}
+  <div class="container">
+    <div class="row" id='articleId{{this.id}}'>
+      <div class="col" id='link-col' data-link="{{this.link}}">
+        <a href={{this.link}} target="_blank"><h4>{{this.title}}</h4></a>
+        <div class="col">
+          {{#if this.summary}}
+          <p>{{this.summary}}</p>
+          {{else}}
+          <p>No available summary for article</p>
+          {{/if}}
+        </div>
+      </div>
+      <div id="buttonDiv" class="col-1 mt-3 pb-2 mr-2">
+        <button id="saveButton" type="button" name="saveButton" data-id={{this.id}}>Save Article</button>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

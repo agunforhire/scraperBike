@@ -1,0 +1,74 @@
+
+<header>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">Your History</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="m-y-md">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <p class="lead">
+        <a id="deleteButton" class="btn btn-warning btn-lg" href="/saved" role="button">Delete all your saved articles</a>
+        <a class="btn btn-primary btn-lg float-right" href="/">Back to articles</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  {{#each article}}
+  <div class="container">
+    <div class="row" id='articleId'data-article="{{this._id}}">
+      <div class="col" id='link-col' data-link="{{this.link}}">
+        <a href={{this.link}} target="_blank"><h4>{{this.title}}</h4></a>
+        <div class="col">
+          {{#if this.summary}}
+          <p>{{this.summary}}</p>
+          {{else}}
+          <p>No available summary for article</p>
+          {{/if}}
+          {{#if this.notes}}
+          <p><b>{{this.notes.title}}</b></p>
+          <p class="bg-info text-light">{{this.notes.body}}</p>
+          {{else}}
+          <p>No Notes Saved, add one!</p>
+          {{/if}}
+        </div>
+      </div>
+      <div id="buttonDiv" class="col-1 mt-3 pb-2 mr-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noteModal">Add a note</button>
+        {{!-- <button id="addNote" type="button" name="addAnote" data-id={{this._id}}>Add a note</button> --}}
+        {{!-- testing modal functionality inside the article each, I have a feeling this is going to be ugly. --}}
+        <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="noteModalLabel">Add a note!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="noteTitle" class="col-form-label">Title your Note:</label>
+                    <input type="text" class="form-control" id="noteTitle">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Note text:</label>
+                    <textarea class="form-control" id="messageText"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="saveNote" data-id="{{this._id}}" type="button" class="btn btn-primary">Save Note</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
